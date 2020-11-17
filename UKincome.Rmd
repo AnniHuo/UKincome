@@ -1,10 +1,15 @@
 ---
-
-title: "GEOG0114_Week4"
-output: html_document
-
+editor_options:
+  markdown:
+    wrap: 72
 ---
+
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
 # UKincome
+
 ```{r}
 # download packages
 library(sf)
@@ -12,20 +17,29 @@ library(nngeo)
 library(data.table)
 library(tmap)
 ```
+
 ```{r}
 uk_oas <- st_read("gdhi_data/nutsl3_gdhi_timeseries.shp", 
                       crs=27700)
 uk_oas %>% 
   head()
 ```
+
 ```{r}
 # plot(st_geometry(uk_oas))
+# install.packages("rmapshaper")
 library(rmapshaper)
 library(tidyverse)
 ms_uk_oas <- uk_oas %>% 
   ms_simplify(., keep = 0.05)
 plot(ms_uk_oas$geometry)
 ```
+
+```{r}
+# plot(uk_oas$geometry)
+
+```
+
 ## chosen OA test
 
 ```{r}
@@ -34,7 +48,6 @@ tm_shape(ms_uk_oas) +
   tm_shape(ms_uk_oas[ms_uk_oas$objectid=="10",]) +
   tm_fill(col = "red")
 ```
-
 
 ### Find the neighbors
 
@@ -48,6 +61,7 @@ chosen_oa_neighbours <- st_nn(st_geometry(st_centroid(uk_oas[uk_oas$objectid==ch
                               k = 10,
                               maxdist = 600000) 
 ```
+
 ```{r}
 class(chosen_oa_neighbours)
 ```
@@ -58,6 +72,7 @@ class(chosen_oa_neighbours)
 neighbour_names <- uk_oas[chosen_oa_neighbours[[1]],]
 neighbour_names <- neighbour_names$objectid
 ```
+
 ### Neighbor map for NO.10
 
 ```{r}
@@ -73,7 +88,9 @@ tm_shape(ms_uk_oas) +
   # overlay the borders
   tm_borders(col="black")
 ```
+
 ### queen function way
+
 ```{r}
 st_queen <- function(a, b = a) st_relate(a, b, pattern = "F***T****")
 chosen_oa_neighbours <- st_queen(st_geometry(ms_uk_oas[ms_uk_oas$objectid==chosen_oa,]),
@@ -95,6 +112,7 @@ tm_shape(ms_uk_oas) +
   tm_borders(col="black")
 
 ```
+
 ## processing income dataset
 
 ```{r}
@@ -106,14 +124,19 @@ tm_shape(ms_uk_oas)+
             bg.color = "white")+
   tm_legend(position = c("left", "bottom"))
 ```
-here is the previous way of calculating neighbourhoodness for our chosen OA
-but now we will add an extra argument that states we want a non-sparse adjacency matrix returned
 
-find only nearest neighbours to our chosen output area centroid, find all within 500 meters
-select only the the centroid of our chosen output area and all other areas (with st_centroid)
-we set the maximum number of neighbours we want to find to "50" (with parameter k)
-we set the maximum distance of calling an OA centroid a neigbour to "500" (with parameter maxdist)
-we return a non-sparse matrix that tells us whether each OA is a neighbour or not (with parameter sparse)
+here is the previous way of calculating neighbourhoodness for our chosen
+OA but now we will add an extra argument that states we want a
+non-sparse adjacency matrix returned
+
+find only nearest neighbours to our chosen output area centroid, find
+all within 500 meters select only the the centroid of our chosen output
+area and all other areas (with st_centroid) we set the maximum number of
+neighbours we want to find to "50" (with parameter k) we set the maximum
+distance of calling an OA centroid a neigbour to "500" (with parameter
+maxdist) we return a non-sparse matrix that tells us whether each OA is
+a neighbour or not (with parameter sparse)
+
 ```{r}
 chosen_oa_neighbours <- st_nn(st_geometry(st_centroid(uk_oas[uk_oas$objectid==chosen_oa,])), 
                               st_geometry(st_centroid(uk_oas)),
@@ -124,17 +147,21 @@ chosen_oa_neighbours <- st_nn(st_geometry(st_centroid(uk_oas[uk_oas$objectid==ch
 
 ## Global Moran's I
 
-Some of the operations they will do will be similar to the examples shown earlier, but the way they assign and store variables makes it much quicker to run complex spatial operations.
+Some of the operations they will do will be similar to the examples
+shown earlier, but the way they assign and store variables makes it much
+quicker to run complex spatial operations.
 
 ```{r}
 # for doing spatial operations (now mostly superseded by sf)
 library(sp)
 
 # for our neighbourhood and Moran's I analysis
+# install.packages("deldir")
 library(spdep)
 ```
 
 ### Find neighbours
+
 ```{r}
 # neighbors
 uk_oas_sp <- as_Spatial(uk_oas, IDs=uk_oas$objectid)
@@ -142,8 +169,14 @@ uk_oas_nb <- poly2nb(uk_oas_sp, row.names=uk_oas_sp$objectid)
 
 ```
 ```{r}
+summary(uk_oas_nb)
+```
+
+
+```{r}
 str(uk_oas_nb,list.len=10)
 ```
+
 ### List weights object
 
 ```{r}
@@ -161,9 +194,12 @@ class(nb_weights_list)
 moran(uk_oas_sp$X2018, 
       nb_weights_list, 
       n=length(nb_weights_list$neighbours), 
-      S0=Szero(nb_weights_list))
+      S0=Szero(nb_weights_list),
+      zero.policy = TRUE)
 ```
+
 ### pseudo p-value
+
 ```{r}
 # run it 599 times
 mc_model <- moran.mc(uk_oas_sp$X2018, nb_weights_list, zero.policy = TRUE, nsim=599)
@@ -171,6 +207,7 @@ mc_model <- moran.mc(uk_oas_sp$X2018, nb_weights_list, zero.policy = TRUE, nsim=
 # what do we get?
 mc_model
 ```
+
 ## Local Moran's I
 
 ### Find neighbours
@@ -181,6 +218,7 @@ mc_model
 # uk_oas_nb <- poly2nb(uk_oas_sp, row.names=uk_oas_sp$objectid)
 
 ```
+
 ### List weights object
 
 ```{r}
@@ -191,12 +229,14 @@ nb_weights_list <- nb2listw(uk_oas_nb, zero.policy = TRUE, style='W')
 # use the localmoran() function
 local_moran_uk_oa_income <- localmoran(uk_oas_sp$X2018, zero.policy = TRUE, nb_weights_list)
 ```
+
 ### Rescale that variable
 
 ```{r}
 # rescale that variable!
 uk_oas_sp$scale_n_income <- scale(uk_oas_sp$X2018)
 ```
+
 ### Spatial lag variable
 
 ```{r}
@@ -210,6 +250,7 @@ uk_oas_sp$lag_scale_n_income <- lag.listw(nb_weights_list, uk_oas_sp$scale_n_inc
 # convert to sf
 uk_oas_moran_stats <- st_as_sf(uk_oas_sp)
 ```
+
 ### Without statistical significance version
 
 ```{r}
@@ -243,12 +284,15 @@ ggplot(uk_oas_moran_stats, aes(x = scale_n_income,
   labs(colour="Relative to neighbours") +
   geom_point()
 ```
+
 ```{r}
 # map all of the results here
 tm_shape(uk_oas_moran_stats) +
   tm_fill(col = "quad_non_sig")
 ```
+
 ### Statistical significance version
+
 ```{r}
 # run all of these through to assign variables
 
@@ -290,6 +334,7 @@ ggplot(uk_oas_moran_stats, aes(x = scale_n_income,
   labs(colour="Relative to neighbours") +
   geom_point()
 ```
+
 ```{r}
 # map only the statistically significant results here
 tm_shape(uk_oas_moran_stats) +

@@ -1,0 +1,26 @@
+Type: Compendium
+Package: gis_test
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.1
+Authors@R: 
+    person(given = "First",
+           family = "Last",
+           role = c("aut", "cre"),
+           email = "first.last@example.com")
+Description: gis basic binder
+License: What license it uses
+Depends: 
+    data.table,
+    ggplot2,
+    nngeo,
+    rmapshaper,
+    rmarkdown,
+    sf,
+    sp,
+    spdep,
+    tidyverse,
+    tmap
+Remotes: 
+    r-spatial/sf
+Encoding: UTF-8
+LazyData: true
