@@ -302,37 +302,21 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
-<li><a href="#ukincome">UKincome</a><ul>
-<li><a href="#chosen-oa-test">chosen OA test</a><ul>
-<li><a href="#find-the-neighbors">Find the neighbors</a></li>
-<li><a href="#get-names-of-these-neighbors">Get names of these neighbors</a></li>
-<li><a href="#neighbor-map-for-no.10">Neighbor map for NO.10</a></li>
-<li><a href="#queen-function-way">queen function way</a></li>
-</ul></li>
+<li><a href="#geog0114-ukincome-testsite"><strong>GEOG0114 UKincome testsite</strong></a><ul>
+<li><a href="#chosen-oa-test">chosen OA test</a></li>
 <li><a href="#processing-income-dataset">processing income dataset</a></li>
-<li><a href="#global-morans-i">Global Moran’s I</a><ul>
-<li><a href="#find-neighbours">Find neighbours</a></li>
-<li><a href="#list-weights-object">List weights object</a></li>
-<li><a href="#pseudo-p-value">pseudo p-value</a></li>
-</ul></li>
-<li><a href="#local-morans-i">Local Moran’s I</a><ul>
-<li><a href="#find-neighbours-1">Find neighbours</a></li>
-<li><a href="#list-weights-object-1">List weights object</a></li>
-<li><a href="#rescale-that-variable">Rescale that variable</a></li>
-<li><a href="#spatial-lag-variable">Spatial lag variable</a></li>
-<li><a href="#convert-to-sf">Convert to sf</a></li>
-<li><a href="#without-statistical-significance-version">Without statistical significance version</a></li>
-<li><a href="#statistical-significance-version">Statistical significance version</a></li>
-</ul></li>
+<li><a href="#global-morans-i">Global Moran’s I</a></li>
+<li><a href="#local-morans-i">Local Moran’s I</a></li>
 </ul></li>
 </ul>
 </div>
 
-<p><strong>GEOG0114 UKincome testsite</strong></p>
 <hr />
 <hr />
-<div id="ukincome" class="section level1">
-<h1>UKincome</h1>
+<p><span class="math display">\[\\\\[0.2in]\]</span></p>
+<div id="geog0114-ukincome-testsite" class="section level2">
+<h2><strong>GEOG0114 UKincome testsite</strong></h2>
+<p><span class="math display">\[\\\\[0.05in]\]</span></p>
 <pre class="r"><code># download packages
 library(sf)</code></pre>
 <pre><code>## Linking to GEOS 3.8.1, GDAL 3.2.0, PROJ 7.2.0</code></pre>
@@ -413,15 +397,15 @@ library(rmapshaper)</code></pre>
 plot(ms_uk_oas$geometry)</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <pre class="r"><code># plot(uk_oas$geometry)</code></pre>
-<div id="chosen-oa-test" class="section level2">
-<h2>chosen OA test</h2>
+<div id="chosen-oa-test" class="section level3">
+<h3>chosen OA test</h3>
 <pre class="r"><code>tm_shape(ms_uk_oas) +
   tm_borders(col=&quot;black&quot;) +
   tm_shape(ms_uk_oas[ms_uk_oas$objectid==&quot;10&quot;,]) +
   tm_fill(col = &quot;red&quot;)</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<div id="find-the-neighbors" class="section level3">
-<h3>Find the neighbors</h3>
+<div id="find-the-neighbors" class="section level4">
+<h4>Find the neighbors</h4>
 <pre class="r"><code>library(nngeo)
 library(sf)
 chosen_oa &lt;- &quot;10&quot;
@@ -438,13 +422,13 @@ chosen_oa_neighbours &lt;- st_nn(st_geometry(st_centroid(uk_oas[uk_oas$objectid=
 <pre class="r"><code>class(chosen_oa_neighbours)</code></pre>
 <pre><code>## [1] &quot;list&quot;</code></pre>
 </div>
-<div id="get-names-of-these-neighbors" class="section level3">
-<h3>Get names of these neighbors</h3>
+<div id="get-names-of-these-neighbors" class="section level4">
+<h4>Get names of these neighbors</h4>
 <pre class="r"><code>neighbour_names &lt;- uk_oas[chosen_oa_neighbours[[1]],]
 neighbour_names &lt;- neighbour_names$objectid</code></pre>
 </div>
-<div id="neighbor-map-for-no.10" class="section level3">
-<h3>Neighbor map for NO.10</h3>
+<div id="neighbor-map-for-no.10" class="section level4">
+<h4>Neighbor map for NO.10</h4>
 <pre class="r"><code>tm_shape(ms_uk_oas) + 
   tm_borders() +
   # highlight only the neighbours
@@ -458,8 +442,8 @@ neighbour_names &lt;- neighbour_names$objectid</code></pre>
   tm_borders(col=&quot;black&quot;)</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
-<div id="queen-function-way" class="section level3">
-<h3>queen function way</h3>
+<div id="queen-function-way" class="section level4">
+<h4>queen function way</h4>
 <pre class="r"><code>st_queen &lt;- function(a, b = a) st_relate(a, b, pattern = &quot;F***T****&quot;)
 chosen_oa_neighbours &lt;- st_queen(st_geometry(ms_uk_oas[ms_uk_oas$objectid==chosen_oa,]),
                                  st_geometry(ms_uk_oas))
@@ -481,8 +465,8 @@ tm_shape(ms_uk_oas) +
 <p><img src="index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 </div>
 </div>
-<div id="processing-income-dataset" class="section level2">
-<h2>processing income dataset</h2>
+<div id="processing-income-dataset" class="section level3">
+<h3>processing income dataset</h3>
 <pre class="r"><code>tm_shape(ms_uk_oas)+
   tm_borders()+
   tm_fill(&quot;X2018&quot;, palette = &quot;OrRd&quot;)+
@@ -504,8 +488,8 @@ tm_shape(ms_uk_oas) +
 ## over geometries of x</code></pre>
 <pre><code>## projected points</code></pre>
 </div>
-<div id="global-morans-i" class="section level2">
-<h2>Global Moran’s I</h2>
+<div id="global-morans-i" class="section level3">
+<h3>Global Moran’s I</h3>
 <p>Some of the operations they will do will be similar to the examples shown earlier, but the way they assign and store variables makes it much quicker to run complex spatial operations.</p>
 <pre class="r"><code># for doing spatial operations (now mostly superseded by sf)
 library(sp)
@@ -517,8 +501,8 @@ library(spdep)</code></pre>
 <pre><code>## To access larger datasets in this package, install the spDataLarge
 ## package with: `install.packages(&#39;spDataLarge&#39;,
 ## repos=&#39;https://nowosad.github.io/drat/&#39;, type=&#39;source&#39;)`</code></pre>
-<div id="find-neighbours" class="section level3">
-<h3>Find neighbours</h3>
+<div id="find-neighbours" class="section level4">
+<h4>Find neighbours</h4>
 <pre class="r"><code># neighbors
 uk_oas_sp &lt;- as_Spatial(uk_oas, IDs=uk_oas$objectid)</code></pre>
 <pre><code>## Warning in showSRID(uprojargs, format = &quot;PROJ&quot;, multiline = &quot;NO&quot;, prefer_proj
@@ -562,8 +546,8 @@ uk_oas_sp &lt;- as_Spatial(uk_oas, IDs=uk_oas$objectid)</code></pre>
 ##  - attr(*, &quot;type&quot;)= chr &quot;queen&quot;
 ##  - attr(*, &quot;sym&quot;)= logi TRUE</code></pre>
 </div>
-<div id="list-weights-object" class="section level3">
-<h3>List weights object</h3>
+<div id="list-weights-object" class="section level4">
+<h4>List weights object</h4>
 <pre class="r"><code># create the list weights object
 nb_weights_list &lt;- nb2listw(uk_oas_nb, style=&#39;B&#39;, zero.policy = TRUE)
 
@@ -584,8 +568,8 @@ moran(uk_oas_sp$X2018,
 ## $K
 ## [1] 5.686426</code></pre>
 </div>
-<div id="pseudo-p-value" class="section level3">
-<h3>pseudo p-value</h3>
+<div id="pseudo-p-value" class="section level4">
+<h4>pseudo p-value</h4>
 <pre class="r"><code># run it 599 times
 mc_model &lt;- moran.mc(uk_oas_sp$X2018, nb_weights_list, zero.policy = TRUE, nsim=599)
 
@@ -602,16 +586,16 @@ mc_model</code></pre>
 ## alternative hypothesis: greater</code></pre>
 </div>
 </div>
-<div id="local-morans-i" class="section level2">
-<h2>Local Moran’s I</h2>
-<div id="find-neighbours-1" class="section level3">
-<h3>Find neighbours</h3>
+<div id="local-morans-i" class="section level3">
+<h3>Local Moran’s I</h3>
+<div id="find-neighbours-1" class="section level4">
+<h4>Find neighbours</h4>
 <pre class="r"><code># you need the nb object and the nb and weights list
 # make the nb
 # uk_oas_nb &lt;- poly2nb(uk_oas_sp, row.names=uk_oas_sp$objectid)</code></pre>
 </div>
-<div id="list-weights-object-1" class="section level3">
-<h3>List weights object</h3>
+<div id="list-weights-object-1" class="section level4">
+<h4>List weights object</h4>
 <pre class="r"><code># create the list weights object
 # but importantly with the row stadardisation this time
 nb_weights_list &lt;- nb2listw(uk_oas_nb, zero.policy = TRUE, style=&#39;W&#39;)
@@ -619,23 +603,23 @@ nb_weights_list &lt;- nb2listw(uk_oas_nb, zero.policy = TRUE, style=&#39;W&#39;)
 # use the localmoran() function
 local_moran_uk_oa_income &lt;- localmoran(uk_oas_sp$X2018, zero.policy = TRUE, nb_weights_list)</code></pre>
 </div>
-<div id="rescale-that-variable" class="section level3">
-<h3>Rescale that variable</h3>
+<div id="rescale-that-variable" class="section level4">
+<h4>Rescale that variable</h4>
 <pre class="r"><code># rescale that variable!
 uk_oas_sp$scale_n_income &lt;- scale(uk_oas_sp$X2018)</code></pre>
 </div>
-<div id="spatial-lag-variable" class="section level3">
-<h3>Spatial lag variable</h3>
+<div id="spatial-lag-variable" class="section level4">
+<h4>Spatial lag variable</h4>
 <pre class="r"><code># create a spatial lag variable and save it to a new column
 uk_oas_sp$lag_scale_n_income &lt;- lag.listw(nb_weights_list, uk_oas_sp$scale_n_income, zero.policy = TRUE)</code></pre>
 </div>
-<div id="convert-to-sf" class="section level3">
-<h3>Convert to sf</h3>
+<div id="convert-to-sf" class="section level4">
+<h4>Convert to sf</h4>
 <pre class="r"><code># convert to sf
 uk_oas_moran_stats &lt;- st_as_sf(uk_oas_sp)</code></pre>
 </div>
-<div id="without-statistical-significance-version" class="section level3">
-<h3>Without statistical significance version</h3>
+<div id="without-statistical-significance-version" class="section level4">
+<h4>Without statistical significance version</h4>
 <pre class="r"><code>uk_oas_moran_stats$quad_non_sig &lt;- ifelse(uk_oas_moran_stats$scale_n_income &gt; 0 &amp; 
                                             uk_oas_moran_stats$lag_scale_n_income &gt; 0, 
                                           &quot;high-high&quot;, 
@@ -665,8 +649,8 @@ tm_shape(uk_oas_moran_stats) +
   tm_fill(col = &quot;quad_non_sig&quot;)</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 </div>
-<div id="statistical-significance-version" class="section level3">
-<h3>Statistical significance version</h3>
+<div id="statistical-significance-version" class="section level4">
+<h4>Statistical significance version</h4>
 <pre class="r"><code># run all of these through to assign variables
 
 # for the statistical significance version assign a level 

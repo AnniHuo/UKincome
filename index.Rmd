@@ -8,7 +8,6 @@ output:
     toc: true
 
 ---
-**GEOG0114 UKincome testsite**
 
 
 ---
@@ -21,8 +20,10 @@ editor_options:
 
 ------------------------------------------------------------------------
 
-# UKincome
+$$\\\\[0.2in]$$
 
+## **GEOG0114 UKincome testsite**
+$$\\\\[0.05in]$$
 ```{r}
 # download packages
 library(sf)
@@ -53,7 +54,7 @@ plot(ms_uk_oas$geometry)
 
 ```
 
-## chosen OA test
+### chosen OA test
 
 ```{r}
 tm_shape(ms_uk_oas) +
@@ -62,7 +63,7 @@ tm_shape(ms_uk_oas) +
   tm_fill(col = "red")
 ```
 
-### Find the neighbors
+#### Find the neighbors
 
 ```{r}
 library(nngeo)
@@ -79,14 +80,14 @@ chosen_oa_neighbours <- st_nn(st_geometry(st_centroid(uk_oas[uk_oas$objectid==ch
 class(chosen_oa_neighbours)
 ```
 
-### Get names of these neighbors
+#### Get names of these neighbors
 
 ```{r}
 neighbour_names <- uk_oas[chosen_oa_neighbours[[1]],]
 neighbour_names <- neighbour_names$objectid
 ```
 
-### Neighbor map for NO.10
+#### Neighbor map for NO.10
 
 ```{r}
 tm_shape(ms_uk_oas) + 
@@ -102,7 +103,7 @@ tm_shape(ms_uk_oas) +
   tm_borders(col="black")
 ```
 
-### queen function way
+#### queen function way
 
 ```{r}
 st_queen <- function(a, b = a) st_relate(a, b, pattern = "F***T****")
@@ -126,7 +127,7 @@ tm_shape(ms_uk_oas) +
 
 ```
 
-## processing income dataset
+### processing income dataset
 
 ```{r}
 
@@ -158,7 +159,7 @@ chosen_oa_neighbours <- st_nn(st_geometry(st_centroid(uk_oas[uk_oas$objectid==ch
                               maxdist = 600000) 
 ```
 
-## Global Moran's I
+### Global Moran's I
 
 Some of the operations they will do will be similar to the examples
 shown earlier, but the way they assign and store variables makes it much
@@ -173,7 +174,7 @@ library(sp)
 library(spdep)
 ```
 
-### Find neighbours
+#### Find neighbours
 
 ```{r}
 # neighbors
@@ -190,7 +191,7 @@ summary(uk_oas_nb)
 str(uk_oas_nb,list.len=10)
 ```
 
-### List weights object
+#### List weights object
 
 ```{r}
 # create the list weights object
@@ -211,7 +212,7 @@ moran(uk_oas_sp$X2018,
       zero.policy = TRUE)
 ```
 
-### pseudo p-value
+#### pseudo p-value
 
 ```{r}
 # run it 599 times
@@ -221,9 +222,9 @@ mc_model <- moran.mc(uk_oas_sp$X2018, nb_weights_list, zero.policy = TRUE, nsim=
 mc_model
 ```
 
-## Local Moran's I
+### Local Moran's I
 
-### Find neighbours
+#### Find neighbours
 
 ```{r}
 # you need the nb object and the nb and weights list
@@ -232,7 +233,7 @@ mc_model
 
 ```
 
-### List weights object
+#### List weights object
 
 ```{r}
 # create the list weights object
@@ -243,28 +244,28 @@ nb_weights_list <- nb2listw(uk_oas_nb, zero.policy = TRUE, style='W')
 local_moran_uk_oa_income <- localmoran(uk_oas_sp$X2018, zero.policy = TRUE, nb_weights_list)
 ```
 
-### Rescale that variable
+#### Rescale that variable
 
 ```{r}
 # rescale that variable!
 uk_oas_sp$scale_n_income <- scale(uk_oas_sp$X2018)
 ```
 
-### Spatial lag variable
+#### Spatial lag variable
 
 ```{r}
 # create a spatial lag variable and save it to a new column
 uk_oas_sp$lag_scale_n_income <- lag.listw(nb_weights_list, uk_oas_sp$scale_n_income, zero.policy = TRUE)
 ```
 
-### Convert to sf
+#### Convert to sf
 
 ```{r}
 # convert to sf
 uk_oas_moran_stats <- st_as_sf(uk_oas_sp)
 ```
 
-### Without statistical significance version
+#### Without statistical significance version
 
 ```{r}
 uk_oas_moran_stats$quad_non_sig <- ifelse(uk_oas_moran_stats$scale_n_income > 0 & 
@@ -304,7 +305,7 @@ tm_shape(uk_oas_moran_stats) +
   tm_fill(col = "quad_non_sig")
 ```
 
-### Statistical significance version
+#### Statistical significance version
 
 ```{r}
 # run all of these through to assign variables
