@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>index.utf8</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 45px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h2 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h3 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h4 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h5 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h6 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">test site</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">114 test</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+<div id="TOC">
+<ul>
+<li><a href="#ukincome">UKincome</a><ul>
+<li><a href="#chosen-oa-test">chosen OA test</a><ul>
+<li><a href="#find-the-neighbors">Find the neighbors</a></li>
+<li><a href="#get-names-of-these-neighbors">Get names of these neighbors</a></li>
+<li><a href="#neighbor-map-for-no.10">Neighbor map for NO.10</a></li>
+<li><a href="#queen-function-way">queen function way</a></li>
+</ul></li>
+<li><a href="#processing-income-dataset">processing income dataset</a></li>
+<li><a href="#global-morans-i">Global Moran’s I</a><ul>
+<li><a href="#find-neighbours">Find neighbours</a></li>
+<li><a href="#list-weights-object">List weights object</a></li>
+<li><a href="#pseudo-p-value">pseudo p-value</a></li>
+</ul></li>
+<li><a href="#local-morans-i">Local Moran’s I</a><ul>
+<li><a href="#find-neighbours-1">Find neighbours</a></li>
+<li><a href="#list-weights-object-1">List weights object</a></li>
+<li><a href="#rescale-that-variable">Rescale that variable</a></li>
+<li><a href="#spatial-lag-variable">Spatial lag variable</a></li>
+<li><a href="#convert-to-sf">Convert to sf</a></li>
+<li><a href="#without-statistical-significance-version">Without statistical significance version</a></li>
+<li><a href="#statistical-significance-version">Statistical significance version</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+
+<p><strong>GEOG0114 UKincome testsite</strong></p>
+<hr />
+<hr />
+<div id="ukincome" class="section level1">
+<h1>UKincome</h1>
+<pre class="r"><code># download packages
+library(sf)</code></pre>
+<pre><code>## Linking to GEOS 3.8.1, GDAL 3.2.0, PROJ 7.2.0</code></pre>
+<pre class="r"><code>library(nngeo)
+library(data.table)
+library(tmap)</code></pre>
+<pre class="r"><code>uk_oas &lt;- st_read(&quot;gdhi_data/nutsl3_gdhi_timeseries.shp&quot;, 
+                      crs=27700)</code></pre>
+<pre><code>## Reading layer `nutsl3_gdhi_timeseries&#39; from data source `/Users/huoanni/OneDrive - University College London/geog0114/week_4/class_test/gdhi_data/nutsl3_gdhi_timeseries.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 179 features and 33 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: -70.2116 ymin: 5337.901 xmax: 655644.8 ymax: 1220302
+## projected CRS:  OSGB 1936 / British National Grid</code></pre>
+<pre class="r"><code>uk_oas %&gt;% 
+  head()</code></pre>
+<pre><code>## Simple feature collection with 6 features and 33 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: 356180.3 ymin: 506231.8 xmax: 478446.1 ymax: 657534.1
+## projected CRS:  OSGB 1936 / British National Grid
+##   objectid nuts318cd                       nuts318nm  bng_e  bng_n     long
+## 1        1     UKC11 Hartlepool and Stockton-on-Tees 444952 522016 -1.30587
+## 2        2     UKC12                  South Teesside 461718 519597 -1.04695
+## 3        3     UKC13                      Darlington 428029 515649 -1.56835
+## 4        4     UKC14                       Durham CC 410381 532242 -1.84050
+## 5        5     UKC21                  Northumberland 395323 600699 -2.07521
+## 6        6     UKC22                        Tyneside 425849 561221 -1.59801
+##        lat st_areasha st_lengths NUTS.level                      Region.nam
+## 1 54.59135  298521745   164338.5      NUTS3 Hartlepool and Stockton-on-Tees
+## 2 54.56785  298708862   113439.1      NUTS3                  South Teesside
+## 3 54.53535  197475689   107206.3      NUTS3                      Darlington
+## 4 54.68513 2231542399   315237.4      NUTS3                       Durham CC
+## 5 55.30037 5026214898   584227.6      NUTS3                  Northumberland
+## 6 54.94499  402526821   222232.0      NUTS3                        Tyneside
+##   X1997 X1998 X1999 X2000 X2001 X2002 X2003 X2004 X2005 X2006 X2007 X2008 X2009
+## 1  2498  2490  2635  2786  2905  3017  3102  3240  3373  3522  3625  3737  3876
+## 2  2572  2477  2593  2746  2859  2868  2910  3020  3121  3247  3298  3361  3527
+## 3   953   948   958  1041  1119  1140  1164  1205  1246  1283  1363  1375  1453
+## 4  4610  4701  4877  5152  5316  5405  5493  5784  5943  6151  6341  6497  6733
+## 5  3163  3204  3373  3605  3726  3819  4004  4120  4246  4501  4644  4933  5246
+## 6  7586  7715  7794  8194  8524  8733  8993  9447  9549  9881 10232 10389 10897
+##   X2010 X2011 X2012 X2013 X2014 X2015 X2016 X2017 X2018
+## 1  3965  4086  4223  4261  4416  4529  4567  4767  5008
+## 2  3561  3635  3854  3901  4073  4176  4198  4303  4371
+## 3  1465  1462  1527  1573  1600  1667  1731  1779  1827
+## 4  6977  7077  7340  7519  7766  8059  8100  8314  8717
+## 5  5238  5308  5504  5631  5739  5925  6033  6222  6546
+## 6 11226 11436 12010 12290 12616 13172 13276 13552 14263
+##                         geometry
+## 1 MULTIPOLYGON (((447213.9 53...
+## 2 MULTIPOLYGON (((455752.6 52...
+## 3 MULTIPOLYGON (((436388 5223...
+## 4 MULTIPOLYGON (((428366 5542...
+## 5 MULTIPOLYGON (((398583.8 65...
+## 6 MULTIPOLYGON (((438059.1 56...</code></pre>
+<pre class="r"><code># plot(st_geometry(uk_oas))
+# install.packages(&quot;rmapshaper&quot;)
+library(rmapshaper)</code></pre>
+<pre><code>## Registered S3 method overwritten by &#39;geojsonlint&#39;:
+##   method         from 
+##   print.location dplyr</code></pre>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
+## ✓ tibble  3.0.4     ✓ dplyr   1.0.2
+## ✓ tidyr   1.1.2     ✓ stringr 1.4.0
+## ✓ readr   1.4.0     ✓ forcats 0.5.0</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::between()   masks data.table::between()
+## x dplyr::filter()    masks stats::filter()
+## x dplyr::first()     masks data.table::first()
+## x dplyr::lag()       masks stats::lag()
+## x dplyr::last()      masks data.table::last()
+## x purrr::transpose() masks data.table::transpose()</code></pre>
+<pre class="r"><code>ms_uk_oas &lt;- uk_oas %&gt;% 
+  ms_simplify(., keep = 0.05)
+plot(ms_uk_oas$geometry)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code># plot(uk_oas$geometry)</code></pre>
+<div id="chosen-oa-test" class="section level2">
+<h2>chosen OA test</h2>
+<pre class="r"><code>tm_shape(ms_uk_oas) +
+  tm_borders(col=&quot;black&quot;) +
+  tm_shape(ms_uk_oas[ms_uk_oas$objectid==&quot;10&quot;,]) +
+  tm_fill(col = &quot;red&quot;)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div id="find-the-neighbors" class="section level3">
+<h3>Find the neighbors</h3>
+<pre class="r"><code>library(nngeo)
+library(sf)
+chosen_oa &lt;- &quot;10&quot;
+chosen_oa_neighbours &lt;- st_nn(st_geometry(st_centroid(uk_oas[uk_oas$objectid==chosen_oa,])), 
+                              st_geometry(st_centroid(uk_oas)),
+                              sparse = TRUE,
+                              k = 10,
+                              maxdist = 600000) </code></pre>
+<pre><code>## Warning in st_centroid.sf(uk_oas[uk_oas$objectid == chosen_oa, ]): st_centroid
+## assumes attributes are constant over geometries of x</code></pre>
+<pre><code>## Warning in st_centroid.sf(uk_oas): st_centroid assumes attributes are constant
+## over geometries of x</code></pre>
+<pre><code>## projected points</code></pre>
+<pre class="r"><code>class(chosen_oa_neighbours)</code></pre>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+</div>
+<div id="get-names-of-these-neighbors" class="section level3">
+<h3>Get names of these neighbors</h3>
+<pre class="r"><code>neighbour_names &lt;- uk_oas[chosen_oa_neighbours[[1]],]
+neighbour_names &lt;- neighbour_names$objectid</code></pre>
+</div>
+<div id="neighbor-map-for-no.10" class="section level3">
+<h3>Neighbor map for NO.10</h3>
+<pre class="r"><code>tm_shape(ms_uk_oas) + 
+  tm_borders() +
+  # highlight only the neighbours
+  tm_shape(ms_uk_oas[ms_uk_oas$objectid %in% neighbour_names,]) + 
+  tm_fill(col = &quot;green&quot;) +
+  # highlight only the chosen OA
+  tm_shape(ms_uk_oas[ms_uk_oas$objectid==chosen_oa,]) + 
+  tm_fill(col = &quot;red&quot;) +
+  tm_shape(ms_uk_oas) + 
+  # overlay the borders
+  tm_borders(col=&quot;black&quot;)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>
+<div id="queen-function-way" class="section level3">
+<h3>queen function way</h3>
+<pre class="r"><code>st_queen &lt;- function(a, b = a) st_relate(a, b, pattern = &quot;F***T****&quot;)
+chosen_oa_neighbours &lt;- st_queen(st_geometry(ms_uk_oas[ms_uk_oas$objectid==chosen_oa,]),
+                                 st_geometry(ms_uk_oas))
+
+neighbour_names &lt;- ms_uk_oas[chosen_oa_neighbours[[1]],]
+neighbour_names &lt;- neighbour_names$objectid
+
+tm_shape(ms_uk_oas) + 
+  tm_borders() +
+  # highlight only the neighbours
+  tm_shape(ms_uk_oas[ms_uk_oas$objectid %in% neighbour_names,]) + 
+  tm_fill(col = &quot;green&quot;) +
+  tm_shape(ms_uk_oas[ms_uk_oas$objectid==chosen_oa,]) + 
+  # highlight only the chosen OA
+  tm_fill(col = &quot;red&quot;) +
+  tm_shape(ms_uk_oas) + 
+  # overlay the borders
+  tm_borders(col=&quot;black&quot;)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+</div>
+<div id="processing-income-dataset" class="section level2">
+<h2>processing income dataset</h2>
+<pre class="r"><code>tm_shape(ms_uk_oas)+
+  tm_borders()+
+  tm_fill(&quot;X2018&quot;, palette = &quot;OrRd&quot;)+
+  tm_layout(&quot;Income in UK in 2018&quot;, 
+            bg.color = &quot;white&quot;)+
+  tm_legend(position = c(&quot;left&quot;, &quot;bottom&quot;))</code></pre>
+<pre><code>## Some legend labels were too wide. These labels have been resized to 0.62, 0.58, 0.58, 0.58, 0.58, 0.58. Increase legend.width (argument of tm_layout) to make the legend wider and therefore the labels larger.</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>here is the previous way of calculating neighbourhoodness for our chosen OA but now we will add an extra argument that states we want a non-sparse adjacency matrix returned</p>
+<p>find only nearest neighbours to our chosen output area centroid, find all within 500 meters select only the the centroid of our chosen output area and all other areas (with st_centroid) we set the maximum number of neighbours we want to find to “50” (with parameter k) we set the maximum distance of calling an OA centroid a neigbour to “500” (with parameter maxdist) we return a non-sparse matrix that tells us whether each OA is a neighbour or not (with parameter sparse)</p>
+<pre class="r"><code>chosen_oa_neighbours &lt;- st_nn(st_geometry(st_centroid(uk_oas[uk_oas$objectid==chosen_oa,])), 
+                              st_geometry(st_centroid(uk_oas)),
+                              sparse = FALSE,
+                              k = 10,
+                              maxdist = 600000) </code></pre>
+<pre><code>## Warning in st_centroid.sf(uk_oas[uk_oas$objectid == chosen_oa, ]): st_centroid
+## assumes attributes are constant over geometries of x</code></pre>
+<pre><code>## Warning in st_centroid.sf(uk_oas): st_centroid assumes attributes are constant
+## over geometries of x</code></pre>
+<pre><code>## projected points</code></pre>
+</div>
+<div id="global-morans-i" class="section level2">
+<h2>Global Moran’s I</h2>
+<p>Some of the operations they will do will be similar to the examples shown earlier, but the way they assign and store variables makes it much quicker to run complex spatial operations.</p>
+<pre class="r"><code># for doing spatial operations (now mostly superseded by sf)
+library(sp)
+
+# for our neighbourhood and Moran&#39;s I analysis
+# install.packages(&quot;deldir&quot;)
+library(spdep)</code></pre>
+<pre><code>## Loading required package: spData</code></pre>
+<pre><code>## To access larger datasets in this package, install the spDataLarge
+## package with: `install.packages(&#39;spDataLarge&#39;,
+## repos=&#39;https://nowosad.github.io/drat/&#39;, type=&#39;source&#39;)`</code></pre>
+<div id="find-neighbours" class="section level3">
+<h3>Find neighbours</h3>
+<pre class="r"><code># neighbors
+uk_oas_sp &lt;- as_Spatial(uk_oas, IDs=uk_oas$objectid)</code></pre>
+<pre><code>## Warning in showSRID(uprojargs, format = &quot;PROJ&quot;, multiline = &quot;NO&quot;, prefer_proj
+## = prefer_proj): Discarded datum Unknown based on Airy 1830 ellipsoid in CRS
+## definition</code></pre>
+<pre><code>## Warning in showSRID(SRS_string, format = &quot;PROJ&quot;, multiline = &quot;NO&quot;, prefer_proj =
+## prefer_proj): Discarded datum OSGB 1936 in CRS definition</code></pre>
+<pre class="r"><code>uk_oas_nb &lt;- poly2nb(uk_oas_sp, row.names=uk_oas_sp$objectid)</code></pre>
+<pre class="r"><code>summary(uk_oas_nb)</code></pre>
+<pre><code>## Neighbour list object:
+## Number of regions: 179 
+## Number of nonzero links: 796 
+## Percentage nonzero weights: 2.484317 
+## Average number of links: 4.446927 
+## 5 regions with no links:
+## 113 134 150 151 152
+## Link number distribution:
+## 
+##  0  1  2  3  4  5  6  7  8  9 10 12 14 
+##  5 13 19 29 34 29 16 14 10  5  2  2  1 
+## 13 least connected regions:
+## 8 27 28 39 45 55 74 122 127 130 131 132 154 with 1 link
+## 1 most connected region:
+## 32 with 14 links</code></pre>
+<pre class="r"><code>str(uk_oas_nb,list.len=10)</code></pre>
+<pre><code>## List of 179
+##  $ : int [1:4] 2 3 4 32
+##  $ : int [1:2] 1 32
+##  $ : int [1:3] 1 4 32
+##  $ : int [1:7] 1 3 5 6 7 9 32
+##  $ : int [1:4] 4 6 9 164
+##  $ : int [1:3] 4 5 7
+##  $ : int [1:2] 4 6
+##  $ : int 9
+##  $ : int [1:7] 4 5 8 17 32 164 165
+##  $ : int [1:4] 11 12 14 22
+##   [list output truncated]
+##  - attr(*, &quot;class&quot;)= chr &quot;nb&quot;
+##  - attr(*, &quot;region.id&quot;)= int [1:179] 1 2 3 4 5 6 7 8 9 10 ...
+##  - attr(*, &quot;call&quot;)= language poly2nb(pl = uk_oas_sp, row.names = uk_oas_sp$objectid)
+##  - attr(*, &quot;type&quot;)= chr &quot;queen&quot;
+##  - attr(*, &quot;sym&quot;)= logi TRUE</code></pre>
+</div>
+<div id="list-weights-object" class="section level3">
+<h3>List weights object</h3>
+<pre class="r"><code># create the list weights object
+nb_weights_list &lt;- nb2listw(uk_oas_nb, style=&#39;B&#39;, zero.policy = TRUE)
+
+# have a look at the class
+class(nb_weights_list)</code></pre>
+<pre><code>## [1] &quot;listw&quot; &quot;nb&quot;</code></pre>
+<pre class="r"><code># so it&#39;s nb AND weights
+
+# now use that to create a quick Moran&#39;s I
+moran(uk_oas_sp$X2018, 
+      nb_weights_list, 
+      n=length(nb_weights_list$neighbours), 
+      S0=Szero(nb_weights_list),
+      zero.policy = TRUE)</code></pre>
+<pre><code>## $I
+## [1] 0.4510701
+## 
+## $K
+## [1] 5.686426</code></pre>
+</div>
+<div id="pseudo-p-value" class="section level3">
+<h3>pseudo p-value</h3>
+<pre class="r"><code># run it 599 times
+mc_model &lt;- moran.mc(uk_oas_sp$X2018, nb_weights_list, zero.policy = TRUE, nsim=599)
+
+# what do we get?
+mc_model</code></pre>
+<pre><code>## 
+##  Monte-Carlo simulation of Moran I
+## 
+## data:  uk_oas_sp$X2018 
+## weights: nb_weights_list  
+## number of simulations + 1: 600 
+## 
+## statistic = 0.43847, observed rank = 600, p-value = 0.001667
+## alternative hypothesis: greater</code></pre>
+</div>
+</div>
+<div id="local-morans-i" class="section level2">
+<h2>Local Moran’s I</h2>
+<div id="find-neighbours-1" class="section level3">
+<h3>Find neighbours</h3>
+<pre class="r"><code># you need the nb object and the nb and weights list
+# make the nb
+# uk_oas_nb &lt;- poly2nb(uk_oas_sp, row.names=uk_oas_sp$objectid)</code></pre>
+</div>
+<div id="list-weights-object-1" class="section level3">
+<h3>List weights object</h3>
+<pre class="r"><code># create the list weights object
+# but importantly with the row stadardisation this time
+nb_weights_list &lt;- nb2listw(uk_oas_nb, zero.policy = TRUE, style=&#39;W&#39;)
+
+# use the localmoran() function
+local_moran_uk_oa_income &lt;- localmoran(uk_oas_sp$X2018, zero.policy = TRUE, nb_weights_list)</code></pre>
+</div>
+<div id="rescale-that-variable" class="section level3">
+<h3>Rescale that variable</h3>
+<pre class="r"><code># rescale that variable!
+uk_oas_sp$scale_n_income &lt;- scale(uk_oas_sp$X2018)</code></pre>
+</div>
+<div id="spatial-lag-variable" class="section level3">
+<h3>Spatial lag variable</h3>
+<pre class="r"><code># create a spatial lag variable and save it to a new column
+uk_oas_sp$lag_scale_n_income &lt;- lag.listw(nb_weights_list, uk_oas_sp$scale_n_income, zero.policy = TRUE)</code></pre>
+</div>
+<div id="convert-to-sf" class="section level3">
+<h3>Convert to sf</h3>
+<pre class="r"><code># convert to sf
+uk_oas_moran_stats &lt;- st_as_sf(uk_oas_sp)</code></pre>
+</div>
+<div id="without-statistical-significance-version" class="section level3">
+<h3>Without statistical significance version</h3>
+<pre class="r"><code>uk_oas_moran_stats$quad_non_sig &lt;- ifelse(uk_oas_moran_stats$scale_n_income &gt; 0 &amp; 
+                                            uk_oas_moran_stats$lag_scale_n_income &gt; 0, 
+                                          &quot;high-high&quot;, 
+                                          ifelse(uk_oas_moran_stats$scale_n_income &lt;= 0 &amp; 
+                                                   uk_oas_moran_stats$lag_scale_n_income &lt;= 0,
+                                                 &quot;low-low&quot;, 
+                                                 ifelse(uk_oas_moran_stats$scale_n_income &gt; 0 &amp; 
+                                                          uk_oas_moran_stats$lag_scale_n_income &lt;= 0, 
+                                                        &quot;high-low&quot;, 
+                                                        ifelse(uk_oas_moran_stats$scale_n_income &lt;= 0 &amp; 
+                                                                 uk_oas_moran_stats$lag_scale_n_income &gt; 0,
+                                                               &quot;low-high&quot;,NA))))</code></pre>
+<pre class="r"><code>library(ggplot2)</code></pre>
+<pre class="r"><code># plot the results without the satistical significance
+ggplot(uk_oas_moran_stats, aes(x = scale_n_income,
+                               y = lag_scale_n_income,
+                               color = quad_non_sig)) +
+  geom_vline(xintercept = 0) + # plot vertical line
+  geom_hline(yintercept = 0) + # plot horizontal line
+  xlab(&quot;Scaled income (n)&quot;) +
+  ylab(&quot;Lagged Scaled income (n)&quot;) +
+  labs(colour=&quot;Relative to neighbours&quot;) +
+  geom_point()</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<pre class="r"><code># map all of the results here
+tm_shape(uk_oas_moran_stats) +
+  tm_fill(col = &quot;quad_non_sig&quot;)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+</div>
+<div id="statistical-significance-version" class="section level3">
+<h3>Statistical significance version</h3>
+<pre class="r"><code># run all of these through to assign variables
+
+# for the statistical significance version assign a level 
+# of statistical significance for the p value, column 5 of the local moran model
+sig_level &lt;- 0.1
+
+# version with significance value
+uk_oas_moran_stats$quad_sig &lt;- ifelse(uk_oas_moran_stats$scale_n_income &gt; 0 &amp; 
+                                        uk_oas_moran_stats$lag_scale_n_income &gt; 0 &amp; 
+                                        local_moran_uk_oa_income[,5] &lt;= sig_level, 
+                                      &quot;high-high&quot;, 
+                                      ifelse(uk_oas_moran_stats$scale_n_income &lt;= 0 &amp;
+                                               uk_oas_moran_stats$lag_scale_n_income &lt;= 0 &amp; 
+                                               local_moran_uk_oa_income[,5] &lt;= sig_level, 
+                                             &quot;low-low&quot;, 
+                                             ifelse(uk_oas_moran_stats$scale_n_income &gt; 0 &amp; 
+                                                      uk_oas_moran_stats$lag_scale_n_income &lt;= 0 &amp; 
+                                                      local_moran_uk_oa_income[,5] &lt;= sig_level, 
+                                                    &quot;high-low&quot;, 
+                                                    ifelse(uk_oas_moran_stats$scale_n_income &lt;= 0 &amp; 
+                                                             uk_oas_moran_stats$lag_scale_n_income &gt; 0 &amp; 
+                                                             local_moran_uk_oa_income[,5] &lt;= sig_level,
+                                                           &quot;low-high&quot;,
+                                                           ifelse(local_moran_uk_oa_income[,5] &gt; sig_level,
+                                                                  &quot;not-significant&quot;,
+                                                                  &quot;not-significant&quot;)))))</code></pre>
+<pre class="r"><code># plot the results nnw with the satistical significance
+ggplot(uk_oas_moran_stats, aes(x = scale_n_income, 
+                                   y = lag_scale_n_income, 
+                                   color = quad_sig)) +
+  geom_vline(xintercept = 0) + # plot vertical line
+  geom_hline(yintercept = 0) + # plot horizontal line
+  xlab(&quot;Scaled income (n)&quot;) +
+  ylab(&quot;Lagged Scaled income (n)&quot;) +
+  labs(colour=&quot;Relative to neighbours&quot;) +
+  geom_point()</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<pre class="r"><code># map only the statistically significant results here
+tm_shape(uk_oas_moran_stats) +
+  tm_fill(col = &quot;quad_sig&quot;)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

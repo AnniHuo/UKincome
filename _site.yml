@@ -1,0 +1,9 @@
+name: "GEOG0114_classtest"
+output_dir: "."
+navbar:
+  title: "test site"
+  left:
+    - text: "114 test"
+      href: index.html
+
+
